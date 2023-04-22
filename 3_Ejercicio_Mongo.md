@@ -69,6 +69,20 @@ Resultado:
 # listar cantidad de peliculas por lenguaje
 # language: [_id, name] & film: [_id,	title,	description,	release_year,	language_id,	length,	rating]
 db.language.find()
+# aggregate_ agrupa valores de multiples documentos, realiza operaciones en la data agrupada, etc.
+
+db.film.aggregate([
+  {
+    $lookup: {
+      from: "language",
+      localFiled: "name",
+      foreingField: "lnaguage_id",
+      as: "language"
+    }
+  }
+])
+# as_ parte de la etapa de agregacion $lookup, para especificar el identificador del nuevo campo 
+# $lookup_ clave de relacion "language_id" name:language_id
 
 ```
 [
