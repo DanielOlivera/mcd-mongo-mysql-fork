@@ -65,6 +65,9 @@ use sakila
 1. Listar la cantidad de películas que se hicieron por lenguaje. (Ver: lookup, unwind, group, sort)
 
 Resultado:
+
+db.language.find()
+
 ```
 [
   { _id: 'Spanish', count: 135 },
