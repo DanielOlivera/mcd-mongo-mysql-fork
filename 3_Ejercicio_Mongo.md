@@ -76,10 +76,11 @@ db.film.aggregate([
     $lookup: {
       from: "language",
       localFiled: "name",
-      foreingField: "lnaguage_id",
-      as: "language"
+      foreingField: "language_id",
+      as: "count_language"
     }
-  }
+  },
+  $unwind: "$count_language"
 ])
 # as_ parte de la etapa de agregacion $lookup, para especificar el identificador del nuevo campo 
 # $lookup_ clave de relacion "language_id" name:language_id
