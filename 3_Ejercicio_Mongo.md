@@ -66,6 +66,8 @@ use sakila
 
 Resultado:
 
+# listar cantidad de peliculas por lenguaje
+# language: [_id, name] & film: [_id,	title,	description,	release_year,	language_id,	length,	rating]
 db.language.find()
 
 ```
