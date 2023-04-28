@@ -75,19 +75,20 @@ db.film.aggregate([
   {
     $lookup: {
       from: "language",
-      localFiled: "name",
-      foreingField: "language_id",
+      localField: "language_id",
+      foreignField: "_id",
       as: "count_language"
     }
   },
-  {$unwind: "$count_language"}
+  {$unwind: "$count_language"},
   {
     $group: {
-      _id: "$count_language",
+      _id: "$count_language.name",
       count: {$sum: 1}
     }
   }
 ])
+
 # as_ parte de la etapa de agregacion $lookup, para especificar el identificador del nuevo campo 
 # $lookup_ clave de relacion "language_id" name:language_id
 # sum: 1 tendria que sumar mas uno a cada instancia de idioma respecto a el idioma del film 
